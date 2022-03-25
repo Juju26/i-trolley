@@ -1,0 +1,2 @@
+My sql error while deleting : -> you are using safe mode
+SET SQL_SAFE_UPDATES = 0; 

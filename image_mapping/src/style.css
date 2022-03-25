@@ -1,0 +1,56 @@
+.centered {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-40%, -40%);
+    height: auto;
+    width: fit-content;
+}
+
+h1{
+    font-size: 130px;
+}
+#bg{
+    background-image: url("/image_mapping/imgs/floor_1_re.png");
+    background-size: auto;
+}
+
+/* .myfloor{
+    display: block;
+    text-align: center;
+}
+
+.myfloor img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
+
+#floor-selection{
+    width: max-content;
+    height: max-content;
+}
+
+.myfloor span{
+    text-align: center;
+    background: #ffdede;
+    padding: 6px 10px;
+    display: block;
+    width: 100px;
+    border: 1px solid #d47c7c;
+    margin: 8px auto;
+}
+
+#show-gfloor{
+    color:red;
+    border: 1px solid salmon;
+    padding: 5px;
+}
+#show-1floor{
+    color:green;
+    border: 1px solid salmon;
+    padding: 5px;
+} */
