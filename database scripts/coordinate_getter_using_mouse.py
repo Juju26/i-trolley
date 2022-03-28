@@ -19,6 +19,11 @@ class Database:
         self.mycursor.execute("create table if not exists coordinates_table(location varchar(10))")
         self.mydb.commit()
 
+
+    '''insert_coordinates_of_store  function will generate and insert the locations(a-1-1,a-1-2) of the store into database
+       column variable no of columns,rows variable no of rows,rack variable no of racks
+    
+    '''
     def insert_coordinates_of_store(self):
         column="abcdefghijklmnopqrstuvwxyz"
         row="123456"
@@ -31,17 +36,23 @@ class Database:
                     self.mycursor.execute("insert into coordinates_table values('%s');"%(location))
                     self.mydb.commit()
     
+
+    '''generate_coordinates_location method when called cretes a window with the image of the store and
+       clicking on a location creates the x,y coordinates into the database
+        
+        note: mostly should be run like one time or it will overwrite the previous coordinates
+    '''
     def generate_coordinates_location(self):
         column="abcdefghijklmnopqrstuvwxyz"
         row="123456"
         rack="123"
         location_list=[]
-        
-
         for i in column:
             for j in row:
                 for k in rack:
                     location_list.append(str(i)+'-'+str(j)+'-'+str(k))
+
+        # mouse click used to get the coordinates of the mouse pointer 
         def onclick(event): 
             global counter
             print("location=%s, xdata=%f, ydata=%f" % (location_list[counter], event.xdata, event.ydata))

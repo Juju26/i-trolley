@@ -78,7 +78,7 @@ def find_product(user_given_list,prod_name):
 def welcome():
     print("Welcome to smart trolley")
     print("-------- Available commands -----")
-    print("1. Add items \n2. Show items \n3.sort shop list \n4.Find product  \nn. Exit")
+    print("1. Add items \n2. Show items \n3.sort shop list \n4.Find product  \n5.Show items with location \n Exit")
     process = True
     while process:
         command = input("--->  Enter command :  ")
@@ -96,6 +96,9 @@ def welcome():
         elif command=="find" or command=='4':
             user_given_list=db_obj.share_item_location()
             find_product(user_given_list,input("Enter product name : "))
+        elif command=="location" or command=='5':
+            db_obj.show_items_by_location()
+            print("-"*20)
         elif command == "exit" or command=='n':
             process=False
             print("Thank you for using smart trolley")

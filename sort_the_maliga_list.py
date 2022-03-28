@@ -1,4 +1,4 @@
-from add_product import Database
+from cmd_app import Database
 from prettytable import PrettyTable as pt
 """
 creates obj for databse class
