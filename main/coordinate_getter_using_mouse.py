@@ -34,7 +34,7 @@ class Database:
                 for k in rack:
                     location=str(i)+'-'+str(j)+'-'+str(k)
                     self.mycursor.execute("insert into coordinates_table values('%s');"%(location))
-                    self.mydb.commit()
+                    #self.mydb.commit()
     
 
     '''generate_coordinates_location method when called cretes a window with the image of the store and
@@ -56,9 +56,12 @@ class Database:
         def onclick(event): 
             global counter
             print("location=%s, xdata=%f, ydata=%f" % (location_list[counter], event.xdata, event.ydata))
+            #print(" %f, %f" % ( event.xdata, event.ydata))
+            
             self.mycursor.execute("update coordinates_table set x_cord='%f' where location='%s';"%(event.xdata,location_list[counter]))
             self.mycursor.execute("update coordinates_table set y_cord='%f' where location='%s';"%(event.ydata,location_list[counter]))
-            self.mydb.commit()
+            
+            #self.mydb.commit()
             counter+=1
 
         def onrelease(event):

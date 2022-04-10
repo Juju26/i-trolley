@@ -4,6 +4,10 @@ list oda items location get pannu
 then get xy coordinates
 map the locations on the image
 
+
+
+keep client side seperately (getting the list from user
+share item location can be moved to cmd file )
 '''
 
 
@@ -58,8 +62,7 @@ class Database:
         i=0
         self.mycursor.execute("select location from product_details;")
         avail_items_with_location=self.mycursor.fetchall()
-        for item in avail_items_with_location:
-            
+        for item in avail_items_with_location:  
             item_list_loc.append(item[0])
             self.mycursor.execute("select c.x_cord,c.y_cord from coordinates_table c,customer_table cus where c.location=cus.location;")
             x_y_coord=self.mycursor.fetchall()

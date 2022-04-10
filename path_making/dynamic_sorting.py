@@ -1,4 +1,4 @@
-from cmd_app import Database
+from main.cmd_app import Database
 
 
 def dyn_sorting():

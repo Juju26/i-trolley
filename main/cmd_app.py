@@ -91,7 +91,8 @@ def welcome():
             db_obj.show_items()
             print("-"*20)
         elif command == "sort" or command=='3':
-            runpy.run_path("sort_the_maliga_list.py")
+            runpy.run_path("../smart trolley/main/sort_the_maliga_list.py")
+            
             print("-"*20)
         elif command=="find" or command=='4':
             user_given_list=db_obj.share_item_location()
