@@ -53,6 +53,16 @@ class Database:
         for item in avail_items_with_location:
             item_dict[item[0]]=item[1] 
         return item_dict
+    
+    # def share_location_customerProduct(self,prod_name):
+    #     location_list_customerProduct=[]
+    #     for i in prod_name:
+    #         self.mycursor.execute("select location from product_details where prod_name='%s';"%(i))
+    #         avail_items_with_location=self.mycursor.fetchall()
+    #         item_dict={}
+    #         for item in avail_items_with_location:
+    #             item_dict[item[0]]=item[1] 
+    #         location_list_customerProduct.append(item_dict)
 
 
 def get_items(db_obj):
@@ -78,7 +88,7 @@ def find_product(user_given_list,prod_name):
 def welcome():
     print("Welcome to smart trolley")
     print("-------- Available commands -----")
-    print("1. Add items \n2. Show items \n3.sort shop list \n4.Find product  \n5.Show items with location \n Exit")
+    print("1. Add items \n2. Show items \n3.sort shop list \n4.Find product  \n5.Show items with location \n6.User locations \nExit")
     process = True
     while process:
         command = input("--->  Enter command :  ")
@@ -97,8 +107,15 @@ def welcome():
         elif command=="find" or command=='4':
             user_given_list=db_obj.share_item_location()
             find_product(user_given_list,input("Enter product name : "))
+        
         elif command=="location" or command=='5':
             db_obj.show_items_by_location()
+            print("-"*20)
+        
+        elif command=="Customer list location" or command=='6':
+            user_given_list=db_obj.share_item_location()
+            prod_name=input("Enter product name : ")
+            find_product(prod_name)
             print("-"*20)
         elif command == "exit" or command=='n':
             process=False
@@ -106,3 +123,6 @@ def welcome():
 
 if __name__=="__main__":
     welcome()
+
+
+    #method 6 implement panu da.... customer product ku location generate panni atha vechu path varairaa mari kondu ponum  21/4/22

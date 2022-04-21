@@ -27,6 +27,8 @@ class Database:
         self.mycursor=self.mydb.cursor()
         self.mycursor.execute("use smart_trolley")
         self.mycursor.execute("create table if not exists product_details(prod_name varchar(50),prod_id varchar(10),location varchar(8),category varchar(20))")
+        self.mycursor.execute("drop table if exists cutomer_table;")
+        self.mycursor.execute("create table if not exists customer_table(product_name varchar(20),location varchar(20))")
         self.mydb.commit()
 
     def get_user_shopping_list(self):
@@ -56,7 +58,7 @@ class Database:
                 plt.plot(x_y_coord[i][0],x_y_coord[i][1], marker='v', color="red")
             plt.show()
         
-    def share_item_location(self,user_shopping_list):
+    def share_item_location(self,user_shopping_list):             
         item_list=[]
         item_list_loc=[]
         i=0
@@ -67,13 +69,27 @@ class Database:
             self.mycursor.execute("select c.x_cord,c.y_cord from coordinates_table c,customer_table cus where c.location=cus.location;")
             x_y_coord=self.mycursor.fetchall()
         return x_y_coord
-        
+
+
+    def make_entry_in_coordinates_table(self):  
+        user_shopping_list=[]
+        with open("../smart trolley/txt_and_readme/shopping_list.txt",'r') as f:
+            user_shopping_list=f.read().splitlines()
+        for item in user_shopping_list:
+            self.mycursor.execute("select location from product_details where prod_name='%s';"%(item))
+            location=self.mycursor.fetchone()
+            if location!=None:
+                self.mycursor.execute("insert into customer_table (product_name,location) values('%s','%s');"%(item,location[0]))
+                self.mydb.commit()
+                
     
 
         #print(item_list)    
 if __name__=="__main__":
     db=Database()
+    db.make_entry_in_coordinates_table()
     db.get_user_shopping_list()
+    
 
 
                 
