@@ -55,8 +55,8 @@ class Database:
         # mouse click used to get the coordinates of the mouse pointer 
         def onclick(event): 
             global counter
-            print("location=%s, xdata=%f, ydata=%f" % (location_list[counter], event.xdata, event.ydata))
-            #print(" %f, %f" % ( event.xdata, event.ydata))
+            #print("location=%s, xdata=%f, ydata=%f" % (location_list[counter], event.xdata, event.ydata))
+            print(" [%f, %f]," % ( event.xdata, event.ydata))
             
             self.mycursor.execute("update coordinates_table set x_cord='%f' where location='%s';"%(event.xdata,location_list[counter]))
             self.mycursor.execute("update coordinates_table set y_cord='%f' where location='%s';"%(event.ydata,location_list[counter]))
