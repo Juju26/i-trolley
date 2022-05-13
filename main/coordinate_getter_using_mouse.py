@@ -17,7 +17,7 @@ class Database:
         self.mycursor=self.mydb.cursor()
         self.mycursor.execute("use smart_trolley")
         self.mycursor.execute("create table if not exists coordinates_table(location varchar(10))")
-        self.mydb.commit()
+        # self.mydb.commit()
 
 
     '''insert_coordinates_of_store  function will generate and insert the locations(a-1-1,a-1-2) of the store into database

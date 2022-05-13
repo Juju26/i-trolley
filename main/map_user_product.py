@@ -50,6 +50,7 @@ class Database:
         elif option==3:
             with open("E:/projects/smart trolley/txt_and_readme/shopping_list.txt",'r') as f:
                 user_shopping_list=f.read().splitlines()
+            print(user_shopping_list)
             x_y_coord=self.share_item_location(user_shopping_list)
             img = mpimg.imread('E:/projects/smart trolley/image_mapping/imgs/floor_1.png')
             plt.figure(figsize = (12,12))
